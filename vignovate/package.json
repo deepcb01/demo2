@@ -1,0 +1,11 @@
+{
+  "name": "vignovate-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VIGNOVATE AI Innovation Company website (static HTML, CSS, vanilla JavaScript)",
+  "scripts": {
+    "start": "npx --yes serve .",
+    "check": "node scripts/check-site.js"
+  },
+  "license": "UNLICENSED"
+}

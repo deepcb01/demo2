@@ -42,7 +42,7 @@ Static multi-page site: plain HTML, CSS and JavaScript. No build step, no framew
   - Technology lists and service descriptions: confirm they match what you actually deliver.
   - Case studies are labelled concept projects; there are no client logos, testimonials or measured results. Add real ones only when they exist.
   - Both vignovate@gmail.com (clickable, receives all enquiries; set in assets/js/config.js) and founder@vignovate.in (plain text, not clickable) are shown. Confirm both mailboxes work.
-  - Fonts: Big Shoulders Display (Bold) is used as a stand-in for Anton; JetBrains Mono for text. Both are SIL OFL (licences in assets/fonts).
+  - Fonts: Outfit (headlines), Instrument Sans (body), Geist Mono (labels), all SIL Open Font License, bundled in assets/fonts (no external requests).
 
 8. CHECKS
   node scripts/check-site.js   verifies internal links and assets, unique titles/descriptions, one H1 per page, canonical tags and sitemap coverage.
@@ -52,7 +52,7 @@ Static multi-page site: plain HTML, CSS and JavaScript. No build step, no framew
   assets/images/hero-v.webp and hero-mountain.webp. The V was cut out of the supplied artwork; the rock was cut from a screenshot
   of the design, so it is lower resolution. Replace hero-mountain.webp with the original rock render (transparent WebP/PNG,
   1672 x 251 or larger, same proportions) for a sharper result. Motion pauses off-screen and is reduced for reduced-motion users.
-  The headline uses Big Shoulders as a stand-in for Anton; if you self-host Anton, add it in styles.css and hero.css.
+  The hero headline uses Outfit; each word is sized to fit its slot in the composition (see assets/js/hero-motion.js).
 
 10. TESTS PERFORMED (headless Chromium, desktop 1440 / tablet 820 / phone 390)
   - scripts/check-site.js: internal links and assets, unique titles and descriptions, one H1 per page, canonical tags, sitemap coverage: passed.
@@ -67,4 +67,4 @@ Static multi-page site: plain HTML, CSS and JavaScript. No build step, no framew
   - The contact form cannot deliver messages until a form provider URL is added (section 6).
   - Keyword volumes were not researched: topic choices are logical, not data-driven. Use Search Console after launch.
   - hero-mountain.webp is cut from a screenshot (lower resolution); replace with the original render.
-  - Privacy and Terms are drafts and have no "owner to verify" notes; Anton font is replaced by Big Shoulders.
+  - Privacy and Terms are drafts and have no "owner to verify" notes.

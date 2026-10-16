@@ -8,35 +8,41 @@ const CAP_TOP = 237, CAP_H = 225;           // reference px (1672 x 941)
 function placeHeadline() {
   if (!stage || !words.length) return;
   const u = stage.clientWidth / 1672;
+  const FONT = '"Outfit", "Arial Black", Arial, sans-serif';
   const ctx = document.createElement('canvas').getContext('2d');
-  ctx.font = '700 100px "Big Shoulders", Anton, Impact, sans-serif';
+  ctx.font = '700 100px ' + FONT;
   const probe = ctx.measureText('H');
-  const capRatio = (probe.actualBoundingBoxAscent || 73) / 100;       // cap height per 1px font-size
-  const fs = (CAP_H * u) / capRatio;
+  const capRatio = (probe.actualBoundingBoxAscent || 70) / 100;        // cap height per 1px font-size
   const fa = probe.fontBoundingBoxAscent / 100, fd = probe.fontBoundingBoxDescent / 100;
-  const baseline = ((1 - (fa + fd)) / 2 + fa) * fs;                    // line-height:1 box
-  const glyphTop = baseline - capRatio * fs;
+  const baselineAt = (fs) => ((1 - (fa + fd)) / 2 + fa) * fs;         // line-height:1 box
+  /* natural width of each word at 100px */
+  const nat = [];
+  words.forEach((w) => { w.style.transform = 'none'; w.style.fontSize = '100px'; nat.push(w.getBoundingClientRect().width / 100); });
   const mobile = window.matchMedia('(max-width: 900px)').matches;
   if (mobile) {
-    /* phones: three stacked lines, left aligned, large and readable */
+    /* phones: three stacked lines, left aligned, as large as fits */
     const W = stage.clientWidth;
-    const capH = Math.min(W * 0.2, 96), mfs = capH / capRatio;
-    const mBase = ((1 - (fa + fd)) / 2 + fa) * mfs, mTop = mBase - capRatio * mfs;
-    const gap = capH * 1.12;
+    const fs = Math.min((W - 40) / Math.max.apply(null, nat), (96 / capRatio));
+    const capH = capRatio * fs, gap = capH * 1.14, glyphTop = baselineAt(fs) - capH;
     words.forEach((w, i) => {
-      w.style.fontSize = mfs + 'px'; w.style.transform = 'none';
-      w.style.left = '20px'; w.style.top = (44 + i * gap - mTop) + 'px';
+      w.style.fontSize = fs + 'px'; w.style.transform = 'none';
+      w.style.left = '20px'; w.style.top = (44 + i * gap - glyphTop) + 'px';
     });
     return;
   }
-  words.forEach((w) => {
+  /* desktop: size so the widest word fits its slot, then stretch each word slightly to fill its slot */
+  let fs = (225 * u) / capRatio;
+  words.forEach((w, i) => { fs = Math.min(fs, (parseFloat(w.dataset.w) * u) / nat[i]); });
+  const TALL = Math.min(2.6, (225 * u) / (capRatio * fs));                                                   // taller letters, like the earlier condensed headline
+  const capH = capRatio * fs * TALL, glyphTop = baselineAt(fs) * TALL - capH;
+  const mid = (237 + 225 / 2) * u;                                     // keep the headline band where the artwork expects it
+  words.forEach((w, i) => {
+    const slot = parseFloat(w.dataset.w) * u, natural = nat[i] * fs;
+    const sx = Math.max(0.9, Math.min(1.22, slot / natural));
     w.style.fontSize = fs + 'px';
-    w.style.transform = 'none';
-    const natural = w.getBoundingClientRect().width;
-    const sx = natural ? (parseFloat(w.dataset.w) * u) / natural : 1;
     w.style.left = parseFloat(w.dataset.x) * u + 'px';
-    w.style.top = (CAP_TOP * u - glyphTop) + 'px';
-    w.style.transform = `scaleX(${sx})`;
+    w.style.top = (mid - capH / 2 - glyphTop) + 'px';
+    w.style.transform = `scale(${sx}, ${TALL})`;
   });
 }
 (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(placeHeadline);

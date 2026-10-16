@@ -2,7 +2,7 @@
 /* ================= HERO (reference-matched, desktop base 1672 x 941) ================= */
 .vx-hero {
   --u: calc(100vw / 1672);
-  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --mono: 'Geist Mono', ui-monospace, Menlo, monospace;
   position: relative; width: 100%; height: calc(var(--u) * 941);
   background: #D2D2D2; overflow: hidden; font-family: var(--mono); color: #0A0A0A;
   text-transform: uppercase;
@@ -34,7 +34,7 @@
 /* stage */
 .vx-stage { position: absolute; inset: 0; z-index: 1; }
 .vx-eyebrow { position: absolute; left: calc(var(--u) * 52); top: calc(var(--u) * 196); margin: 0; font-size: calc(var(--u) * 15.4); letter-spacing: .01em; white-space: nowrap; }
-.vx-hero-title { position: absolute; inset: 0; margin: 0; z-index: 1; font-family: 'Big Shoulders', 'Anton', 'Bebas Neue', Impact, sans-serif; font-weight: 400; line-height: 1; color: #0A0A0A; }
+.vx-hero-title { position: absolute; inset: 0; margin: 0; z-index: 1; font-family: 'Outfit', 'Arial Black', Arial, sans-serif; font-weight: 400; line-height: 1; color: #0A0A0A; }
 .vx-hero-title .vx-w { position: absolute; left: 0; top: 0; white-space: nowrap; transform-origin: 0 0; -webkit-text-stroke: .012em #0A0A0A; will-change: transform; }
 .vx-layer { max-width: none; position: absolute; pointer-events: none; user-select: none; }
 .vx-layer-mountain { left: 0; top: 73.33%; width: 100%; height: auto; z-index: 2; will-change: transform; }
@@ -116,3 +116,8 @@
   .vx-menu-btn { width: 38px; height: 38px; }
 }
 @media (prefers-reduced-motion: reduce) { .vx-orbit { animation: none !important; } }
+
+.vx-copy p { font-family: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif; font-size: calc(var(--u) * 15); line-height: calc(var(--u) * 22); }
+@media (max-width: 900px) { .vx-copy p { font-size: 15px; line-height: 1.55; } }
+.vx-hero-title .vx-w { letter-spacing: -.02em; }
+

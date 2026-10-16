@@ -30,7 +30,7 @@
         el.style.fontSize = fs + 'px';
       } else {
         need = el.firstElementChild.getBoundingClientRect().width;
-        el.style.fontSize = (100 * avail * 0.7 / need) + 'px';
+        el.style.fontSize = (100 * avail * 0.995 / need) + 'px';
       }
     });
   }

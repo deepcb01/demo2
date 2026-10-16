@@ -41,7 +41,7 @@ Static multi-page site: plain HTML, CSS and JavaScript. No build step, no framew
   - Privacy Policy and Terms are general drafts: have them reviewed for your jurisdiction.
   - Technology lists and service descriptions: confirm they match what you actually deliver.
   - Case studies are labelled concept projects; there are no client logos, testimonials or measured results. Add real ones only when they exist.
-  - founder@vignovate.in is displayed as text; vignovate@gmail.com is the clickable address. Confirm the mailbox exists.
+  - Both vignovate@gmail.com (clickable, receives all enquiries; set in assets/js/config.js) and founder@vignovate.in (plain text, not clickable) are shown. Confirm both mailboxes work.
   - Fonts: Big Shoulders Display (Bold) is used as a stand-in for Anton; JetBrains Mono for text. Both are SIL OFL (licences in assets/fonts).
 
 8. CHECKS
@@ -67,4 +67,4 @@ Static multi-page site: plain HTML, CSS and JavaScript. No build step, no framew
   - The contact form cannot deliver messages until a form provider URL is added (section 6).
   - Keyword volumes were not researched: topic choices are logical, not data-driven. Use Search Console after launch.
   - hero-mountain.webp is cut from a screenshot (lower resolution); replace with the original render.
-  - Legal pages are drafts; Anton font is replaced by Big Shoulders.
+  - Privacy and Terms are drafts and have no "owner to verify" notes; Anton font is replaced by Big Shoulders.

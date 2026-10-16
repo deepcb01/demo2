@@ -295,3 +295,8 @@ p+p{margin-top:1em}
 .fp2{right:13%;top:26%}
 .fp3{left:30%;bottom:8%}
 .wrap-less{padding-left:var(--gut);padding-right:var(--gut)}
+
+/* plain-text (non-clickable) address */
+.static-mail{cursor:text;user-select:text}
+.foot-grid .static-mail{display:block;padding:4px 0;font-size:13px}
+.box .big.static-mail{border-bottom:0;font-weight:400}
